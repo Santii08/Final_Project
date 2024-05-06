@@ -41,7 +41,7 @@ const Sign_up = () => {
   }
 
   if (auth.isAuthenticated) {
-    return <Navigate to="/home"></Navigate>;
+    return <Navigate to="/login"></Navigate>;
   }
   return (
     <div>
