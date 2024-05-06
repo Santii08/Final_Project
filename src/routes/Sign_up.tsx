@@ -10,6 +10,7 @@ const Sign_up = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [creado, setCreado] = useState(false);
+
   const auth = useAuth();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -40,7 +41,7 @@ const Sign_up = () => {
     }
   }
 
-  if (auth.isAuthenticated) {
+  if (creado) {
     return <Navigate to="/login"></Navigate>;
   }
   return (
