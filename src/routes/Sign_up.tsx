@@ -41,9 +41,9 @@ const Sign_up = () => {
     }
   }
 
-  /*if (creado) {
-    return <Navigate to="/login"></Navigate>;
-  }*/
+  if (creado) {
+    return <Navigate to="/"></Navigate>;
+  }
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
