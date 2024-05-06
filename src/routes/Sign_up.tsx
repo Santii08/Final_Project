@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../Auth/AuthProvider";
 import { Navigate } from "react-router-dom";
+import { API_URL } from "../Auth/constant";
 
 const Sign_up = () => {
   const [name, setName] = useState("");
@@ -9,11 +10,37 @@ const Sign_up = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const auth = useAuth();
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    /// uso api
+    e.preventDefault();
+    try {
+      const response = await fetch(`${API_URL}/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          username,
+          password,
+        }),
+      });
+      if (response.ok) {
+        console.log("Usario creado correctamente");
+      } else {
+        console.log("Error enviando");
+      }
+    } catch (error) {
+      console.log("Error catch");
+    }
+  }
+
   if (auth.isAuthenticated) {
     return <Navigate to="/home"></Navigate>;
   }
   return (
-    <div>
+    <form className="form" onSubmit={handleSubmit}>
       <h1>SignUp</h1>
       <label>Name</label>
       <input
@@ -51,7 +78,7 @@ const Sign_up = () => {
       />
 
       <button>Sign Up</button>
-    </div>
+    </form>
   );
 };
 
