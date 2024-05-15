@@ -1,3 +1,5 @@
+/*Mobile first*/
+
 *{
     font-family: 'krub', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
@@ -7,6 +9,8 @@
     background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
     height: 100vh;
     width: 100vw;
+
+    position: relative;
     
     box-sizing: border-box;
     text-align: center;
@@ -20,6 +24,14 @@
 
 }
 
+/*.image{
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    width: 2px;
+    height: auto; 
+}
+*/
 input[type="text"], 
 input[type ="password"] {
    
@@ -42,4 +54,25 @@ button{
 .pas {
     display: flex;
     align-items: start;
+}
+
+.white-container {
+    display: none;
+}
+
+/*Tablet (768px - 1024px)*/
+
+@media (min-width: 768px) and (max-width: 1024px), (min-height: 768px){
+
+    .white-container {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Color de fondo semi-transparente */
+        z-index: 0;
+    }
+
 }
