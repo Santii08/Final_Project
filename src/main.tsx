@@ -8,6 +8,9 @@ import Sign_up from "./routes/Sign_up";
 import Home from "./routes/Home";
 import ProtectedRoutes from "./routes/ProtectedRoutes";
 import { AuthProvider } from "./Auth/AuthProvider";
+import Profile from "./routes/Profile";
+import Topics from "./routes/Topics";
+import Chats from "./routes/Chats";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,19 @@ const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path: "/profile",
+    element: <Profile></Profile>
+  },
+  {
+    path: "/topics",
+    element: <Topics></Topics>
+  },
+  {
+    path: "/chats",
+    element: <Chats></Chats>
+  }
+ 
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(

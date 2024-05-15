@@ -4,6 +4,7 @@ import { useAuth } from "../Auth/AuthProvider";
 import { Navigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import './../CSS/Login.css'
+import imagen from "../assets/departamento.png"
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -16,9 +17,14 @@ const Login = () => {
 
   return (
     <div className="big-box">
+      {/*<div className="image">
+        <img src= {imagen} alt="Logo de login" />
+  </div>*/}
+
+  <div className="white-container"></div>
       <h1>Login</h1>
       <div className="login">
-      <label>Username</label>
+      <label className="pas">Username</label>
 
       
       <input 
@@ -27,7 +33,7 @@ const Login = () => {
         onChange={(e) => setUsername(e.target.value)}
       ></input>
 
-      <label>Password </label>
+      <label className="pas">Password </label>
       <input 
         type="password"
         value={password}
@@ -42,6 +48,9 @@ const Login = () => {
         {/* Utilizamos Link para redirigir al componente de SignUp */}
         <Link to="/sign">
           <button>REGISTER</button>
+        </Link>
+        <Link to="/profile">
+          <button>Profile</button>
         </Link>
       </div>
     </div>

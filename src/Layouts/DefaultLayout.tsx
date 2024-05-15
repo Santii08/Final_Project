@@ -13,7 +13,7 @@ const DefaultLayout = ({ children }: DefaultLayout) => {
               <Link to="/profile">Profile</Link>
             </li>
             <li>
-              <Link to="/perfil">Topics</Link>
+              <Link to="/topics">Topics</Link>
             </li>
             <li>
               <Link to="/salir">Message</Link>

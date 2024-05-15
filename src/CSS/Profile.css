@@ -1,0 +1,61 @@
+/*Mobile first*/
+
+* {
+    font-family: 'krub', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+
+.big-boxP {
+
+    background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
+    height: 100vh;
+    width: 100vw;
+
+    position: relative;
+    
+    box-sizing: border-box;
+    text-align: center;
+    color: blanchedalmond;
+
+    display:flex; 
+    flex-direction: column;
+    
+}
+
+.nav {
+
+    display: flex;
+    justify-content: right;
+    color: black;
+    justify-content: space-between;
+
+    header {
+        align-items: flex-start;
+        margin: 5px;
+        padding: 20px;
+        
+    
+    }
+
+    .titulo {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        margin-top: 30px;
+        margin-left: 40px;
+        padding: 0px;
+        color: aliceblue;
+        font-size: 24px;
+   }
+
+}
+
+.fol {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 40px;
+
+}
