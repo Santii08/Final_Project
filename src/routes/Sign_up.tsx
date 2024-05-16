@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { useAuth } from "../Auth/AuthProvider";
-import { Navigate } from "react-router-dom";
+import { ErrorResponse, Navigate, useNavigate } from "react-router-dom";
 import { API_URL } from "../Auth/constant";
+import { AuthResponseError } from "../types/types";
 
 const Sign_up = () => {
   const [name, setName] = useState("");
@@ -9,9 +10,10 @@ const Sign_up = () => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [creado, setCreado] = useState(false);
+  const [errorResponse, setErrorResponse] = useState("");
 
   const auth = useAuth();
+  const goTo = useNavigate();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     /// uso api
@@ -32,22 +34,23 @@ const Sign_up = () => {
       });
       if (response.ok) {
         console.log("Usario creado correctamente");
-        setCreado(true);
+        setErrorResponse("");
+        goTo("/");
       } else {
         console.log("Error enviando");
+        const json = (await response.json()) as AuthResponseError;
+        setErrorResponse(json.body.error);
       }
     } catch (error) {
       console.log("Error catch");
     }
   }
 
-  if (creado) {
-    return <Navigate to="/"></Navigate>;
-  }
   return (
     <div>
       <form className="form" onSubmit={handleSubmit}>
         <h1>SignUp</h1>
+        {!!errorResponse && <div className="errorMessage">{errorResponse}</div>}
         <label>Name</label>
         <input
           type="text"
@@ -85,11 +88,8 @@ const Sign_up = () => {
 
         <button>Sign Up</button>
       </form>
-      {creado ? (
-        <p>El usuario ha sido creado correctamente</p>
-      ) : (
-        <p>Complete correctamente los campos</p>
-      )}
+
+      <p>Complete correctamente los campos</p>
     </div>
   );
 };
