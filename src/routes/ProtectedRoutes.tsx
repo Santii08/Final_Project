@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import { useAuth } from "../Auth/AuthProvider";
-const ProtectedRoutes = () => {
+export default function ProtectedRoutes() {
   const auth = useAuth();
-  return auth.isAuthenticated ? <Outlet></Outlet> : <Navigate to="/" />;
-};
 
-export default ProtectedRoutes;
+  if (auth.isAuthenticated === false || auth.isAuthenticated === null) {
+    return <Navigate to="/" />;
+  }
+
+  return <Outlet />;
+}

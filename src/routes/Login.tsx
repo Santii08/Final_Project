@@ -1,23 +1,37 @@
-import React from "react";
-import { useState } from "react";
-import { useAuth } from "../Auth/AuthProvider";
-import { Navigate, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./../CSS/Login.css";
-import imagen from "../assets/departamento.png";
 import { API_URL } from "../Auth/constant";
-import type { AuthResponseError } from "../types/types";
+import { useAuth } from "../Auth/AuthProvider";
 
+interface User {
+  username: string;
+  email: string;
+  // Otros campos si los hubiera
+}
+
+// Hook para manejar la autenticación del usuario
+const useAuthenticatedUser = () => {
+  const [authenticatedUser, setAuthenticatedUser] = useState<User | null>(null); // Especificamos que el usuario puede ser de tipo User o null
+
+  // Función para establecer el usuario autenticado
+  const setAuthenticated = (user: User | null) => {
+    setAuthenticatedUser(user);
+  };
+
+  return { authenticatedUser, setAuthenticated };
+};
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorResponse, setErrorResponse] = useState("");
-
-  const auth = useAuth();
+  const { setAuthenticated } = useAuthenticatedUser(); // Obtener la función para establecer el usuario autenticado
   const goTo = useNavigate();
+  const auth = useAuth();
+  const { setIsAuthenticated } = useAuth();
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    /// uso api
     e.preventDefault();
     try {
       const response = await fetch(`${API_URL}/login`, {
@@ -31,16 +45,20 @@ const Login = () => {
         }),
       });
       if (response.ok) {
-        console.log("Usario logeado correctamente");
+        console.log("Usuario logeado correctamente");
         setErrorResponse("");
+        setIsAuthenticated(true);
+        const json = await response.json(); // Leer la respuesta JSON
+        setAuthenticated(json.usuario); // Guardar el usuario autenticado usando la función del hook
         goTo("/home");
       } else {
         console.log("Error enviando");
-        const json = (await response.json()) as AuthResponseError;
-        setErrorResponse(json.body.error);
+        const json = await response.json();
+        setErrorResponse(json.error || "Username o Password equivocados");
       }
     } catch (error) {
       console.log("Error catch");
+      setErrorResponse("Error de red");
     }
   }
 
@@ -77,9 +95,6 @@ const Login = () => {
         {/* Utilizamos Link para redirigir al componente de SignUp */}
         <Link to="/sign">
           <button>REGISTER</button>
-        </Link>
-        <Link to="/profile">
-          <button>Profile</button>
         </Link>
       </div>
     </div>
