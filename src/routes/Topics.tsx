@@ -1,8 +1,9 @@
 import React from "react";
+import '../CSS/Topics.css'
 
 const Topics = () => {
   return (
-    <div>
+    <div className="big-boxT">
       <p>TOPICS</p>
     </div>
   );
