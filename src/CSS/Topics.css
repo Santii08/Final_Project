@@ -1,0 +1,20 @@
+/*Mobile First*/
+
+* {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.big-boxT {
+    background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
+    height: 100vh;
+    width: 100vw;
+
+    position: relative;
+    
+    box-sizing: border-box;
+    text-align: center;
+    color: blanchedalmond;
+
+    display:flex; 
+    flex-direction: column;
+}

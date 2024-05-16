@@ -41,6 +41,8 @@ input[type ="password"] {
     box-sizing: border-box;
     border-radius: 10px;
     opacity: 0.6;
+    padding: 10px;
+    font-size: 15px;
 
     display: flex;
     align-items: center;
@@ -54,6 +56,10 @@ button{
 .pas {
     display: flex;
     align-items: start;
+    
+    label{
+        padding: 30px;
+    }
 }
 
 .white-container {
