@@ -16,7 +16,10 @@ const DefaultLayout = ({ children }: DefaultLayout) => {
               <Link to="/topics">Topics</Link>
             </li>
             <li>
-              <Link to="/salir">Message</Link>
+              <Link to="/chats">Message</Link>
+            </li>
+            <li>
+              <Link to="/Salir">Salir</Link>
             </li>
           </ul>
         </nav>

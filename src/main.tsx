@@ -11,6 +11,7 @@ import { AuthProvider } from "./Auth/AuthProvider";
 import Profile from "./routes/Profile";
 import Topics from "./routes/Topics";
 import Chats from "./routes/Chats";
+import Salir from "./routes/Salir";
 
 const router = createBrowserRouter([
   {
@@ -29,21 +30,25 @@ const router = createBrowserRouter([
         path: "/home",
         element: <Home></Home>,
       },
+      {
+        path: "/profile",
+        element: <Profile></Profile>,
+      },
+      {
+        path: "/salir",
+        element: <Salir></Salir>,
+      },
     ],
   },
-  {
-    path: "/profile",
-    element: <Profile></Profile>
-  },
+
   {
     path: "/topics",
-    element: <Topics></Topics>
+    element: <Topics></Topics>,
   },
   {
     path: "/chats",
-    element: <Chats></Chats>
-  }
- 
+    element: <Chats></Chats>,
+  },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
