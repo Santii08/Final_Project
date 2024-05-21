@@ -5,13 +5,13 @@ import img from '../assets/engranajes.png';
 const Chats = () => {
   return (
     <div className="big-boxC">
-      <div className="title">
-        <p>CHATS</p>
+      <div className="chat">
+        <h1>CHATS</h1>
         <img src={img} alt="Configuración"></img>
       </div>
       
       <div className="boton">
-        <button>M</button>
+        <button>+</button>
       </div>
     </div>
 
