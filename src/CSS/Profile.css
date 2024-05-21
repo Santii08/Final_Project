@@ -24,8 +24,15 @@
     
 }
 
+.image4{
+    img{
+        width: 60px;
+        margin-top: 30px;
+        border-radius: 60px;
+    }
+}
 .nav {
-
+    font-size: 10px;
     display: flex;
     justify-content: right;
     color: black;
@@ -47,12 +54,13 @@
         margin-left: 40px;
         padding: 0px;
         color: aliceblue;
-        font-size: 24px;
+        font-size: 15px;
    }
 
 }
 
 .fol {
+    font-size: 15px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
