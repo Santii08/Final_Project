@@ -1,13 +1,14 @@
-import React, { useState } from "react";
-import { API_URL } from "../Auth/constant";
-import { AuthResponseError } from "../types/types";
+import React, { useState, useEffect } from "react";
 
-const EditPorfile = () => {
+import { API_URL } from "../Auth/constant";
+
+const EditProfile = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [birthday, setBirthday] = useState("");
   const [email, setEmail] = useState("");
   const [errorResponse, setErrorResponse] = useState("");
+  const authToken = localStorage.getItem("authToken");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -16,6 +17,7 @@ const EditPorfile = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
         },
         body: JSON.stringify({
           username,
@@ -24,16 +26,24 @@ const EditPorfile = () => {
           email,
         }),
       });
+
       if (response.ok) {
+        const responseData = await response.json();
         console.log("Cambios realizados correctamente");
         setErrorResponse("");
+        // Muestra un mensaje de éxito al usuario
+
+        setEmail(responseData.email);
       } else {
-        console.log("Error enviando");
-        const json = (await response.json()) as AuthResponseError;
-        setErrorResponse(json.body.error);
+        const errorData = await response.json();
+        console.log("Error enviando", errorData);
+        setErrorResponse(errorData.error || "Error desconocido");
       }
     } catch (error) {
-      console.log("Error catch");
+      console.log("Error catch", error);
+      setErrorResponse(
+        "Ha ocurrido un error al intentar actualizar el perfil."
+      );
     }
   }
 
@@ -64,11 +74,14 @@ const EditPorfile = () => {
             onChange={(e) => setBirthday(e.target.value)}
           />
         </div>
-
+        <div>
+          <label>email:{email}</label>
+        </div>
         <button type="submit">Editar</button>
+        {errorResponse && <p style={{ color: "red" }}>{errorResponse}</p>}
       </form>
     </div>
   );
 };
 
-export default EditPorfile;
+export default EditProfile;
