@@ -19,7 +19,7 @@ const Sign_up = () => {
     /// uso api
     e.preventDefault();
     try {
-      const response = await fetch(`${API_URL}/signup`, {
+      const response = await fetch(`${API_URL}/signuppr`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

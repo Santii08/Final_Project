@@ -21,6 +21,9 @@ const DefaultLayout = ({ children }: DefaultLayout) => {
             <li>
               <Link to="/Salir">Salir</Link>
             </li>
+            <li>
+              <Link to="/editprofile">Edit Profile</Link>
+            </li>
           </ul>
         </nav>
       </header>
