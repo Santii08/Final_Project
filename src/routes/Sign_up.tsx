@@ -3,6 +3,8 @@ import { useAuth } from "../Auth/AuthProvider";
 import { ErrorResponse, Navigate, useNavigate } from "react-router-dom";
 import { API_URL } from "../Auth/constant";
 import { AuthResponseError } from "../types/types";
+import '../CSS/Sign_up.css'
+import imagen from '../assets/Imagen sin título.png'
 
 const Sign_up = () => {
   const [name, setName] = useState("");
@@ -47,49 +49,62 @@ const Sign_up = () => {
   }
 
   return (
-    <div>
-      <form className="form" onSubmit={handleSubmit}>
-        <h1>SignUp</h1>
-        {!!errorResponse && <div className="errorMessage">{errorResponse}</div>}
-        <label>Name</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        ></input>
+    <div className ="big-boxS">
+      <div className="image2">
+        <img src= {imagen} alt="Logo de login" />
+      </div>
+      <div className="white-container2">
+        <form className="form2" onSubmit={handleSubmit}>
+        
+          <h1>WELCOME, REGISTER SO YOU CAN USE THE APP</h1>
+          {!!errorResponse && <div className="errorMessage">{errorResponse}</div>}
+          <label className="q">Name</label>
+          <input
+            type="text"
+            value={name}
+            placeholder="Name"
+            onChange={(e) => setName(e.target.value)}
+          ></input>
 
-        <label>Birthday</label>
-        <input
-          type="date"
-          value={birthday}
-          onChange={(e) => setBirthday(e.target.value)}
-        ></input>
+          <label className="q">Birthday</label>
+          <input
+            type="date"
+            value={birthday}
+            onChange={(e) => setBirthday(e.target.value)}
+          ></input>
 
-        <label>Correo Electrónico</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        ></input>
+          <label className="q">Correo Electrónico</label>
+          <input
+            type="email"
+            value={email}
+            placeholder="contact@gmail.com"
+            onChange={(e) => setEmail(e.target.value)}
+          ></input>
 
-        <label>Username</label>
-        <input
-          type="text"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        ></input>
+          <label className="q">Username</label>
+          <input
+            type="text"
+            value={username}
+            placeholder="Username"
+            onChange={(e) => setUsername(e.target.value)}
+          ></input>
 
-        <label>Password </label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+          <label className="q">Password </label>
+          <input
+            type="password"
+            value={password}
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <div className="end">
+            <button>Sign Up</button>
+            <p>Complete correctamente los campos</p>
+          </div>
+          
+        </form>
+      </div>
 
-        <button>Sign Up</button>
-      </form>
-
-      <p>Complete correctamente los campos</p>
+      
     </div>
   );
 };
