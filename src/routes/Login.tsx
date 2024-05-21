@@ -51,6 +51,8 @@ const Login = () => {
         setIsAuthenticated(true);
         const json = await response.json(); // Leer la respuesta JSON
         setAuthenticated(json.usuario); // Guardar el usuario autenticado usando la función del hook
+        localStorage.setItem("authToken", json.token);
+
         goTo("/home");
       } else {
         console.log("Error enviando");
