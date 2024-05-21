@@ -12,6 +12,7 @@ import Profile from "./routes/Profile";
 import Topics from "./routes/Topics";
 import Chats from "./routes/Chats";
 import Salir from "./routes/Salir";
+import EditPorfile from "./routes/EditPorfile";
 
 const router = createBrowserRouter([
   {
@@ -48,6 +49,10 @@ const router = createBrowserRouter([
   {
     path: "/chats",
     element: <Chats></Chats>,
+  },
+  {
+    path: "/editprofile",
+    element: <EditPorfile></EditPorfile>,
   },
 ]);
 
