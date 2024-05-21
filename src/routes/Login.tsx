@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import "./../CSS/Login.css";
 import { API_URL } from "../Auth/constant";
 import { useAuth } from "../Auth/AuthProvider";
+import imagen from '../assets/Imagen sin título.png'
 
 interface User {
   username: string;
@@ -64,39 +65,46 @@ const Login = () => {
 
   return (
     <div className="big-box">
-      {/*<div className="image">
-        <img src= {imagen} alt="Logo de login" />
-  </div>*/}
-      <form className="form" onSubmit={handleSubmit}>
-        <div className="white-container"></div>
-        <h1>Login</h1>
-        {!!errorResponse && <div className="errorMessage">{errorResponse}</div>}
-        <div className="login">
-          <label className="pas">Username</label>
-
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          ></input>
-
-          <label className="pas">Password </label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button>LOGIN</button>
+      <div className="inside">
+        <div className="image">
+          <img src= {imagen} alt="Logo de login" />
         </div>
-      </form>
-      <div>
-        <h3>¿Todavía no tienes cuenta?</h3>
-        <h3>Create una dándole click en el siguiente botón</h3>
-        {/* Utilizamos Link para redirigir al componente de SignUp */}
-        <Link to="/sign">
-          <button>REGISTER</button>
-        </Link>
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="white-container"></div>
+            <h1>WELCOME AGAIN, LOG-IN AND START THE EXPERIENCE</h1>
+            {!!errorResponse && <div className="errorMessage">{errorResponse}</div>}
+            <div className="login">
+              <label className="pas">Username</label>
+
+              <input
+                type="text"
+                value={username}
+                placeholder="Username"
+                onChange={(e) => setUsername(e.target.value)}
+              ></input>
+
+              <label className="pas">Password </label>
+              <input
+                type="password"
+                value={password}
+                placeholder="✶ ✶ ✶ ✶ ✶ ✶ ✶"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <button>LOGIN</button>
+              <div className="last">
+                <h3>¿Todavía no tienes cuenta?</h3>
+                <h3>Create una dándole click en el siguiente botón</h3>
+                {/* Utilizamos Link para redirigir al componente de SignUp */}
+                <Link to="/sign">
+                  <button>REGISTER</button>
+                </Link>
+              </div>
+              
+          </div>
+        </form>
+        
       </div>
+      
     </div>
   );
 };
