@@ -3,6 +3,8 @@ import useAuthenticatedUser from "./Login"; // Importa el hook useAuthenticatedU
 import "../CSS/Profile.css";
 import { Link } from "react-router-dom";
 import imagen from '../assets/Imagen sin título.png'
+import menuIcon from '../assets/menu-hamburguesa.png'
+import NavigationMenu from "./NavigationMenu";
 
 interface User {
   username: string;
@@ -14,36 +16,16 @@ const Profile = () => {
   return (
     <div className="big-boxP">
       
-      
+      <NavigationMenu menuIcon={menuIcon} ></NavigationMenu>
       <div className="nav">
         <div className="titulo">
           <p>Username</p>
-          <p>Descripción</p>
+          <p>Description...</p>
         </div>
         <div className="image4">
           <img src= {imagen} alt="Logo de login" />
         </div>
-        <header>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/profile">Profile</Link>
-              </li>
-              <li>
-                <Link to="/topics">Topics</Link>
-              </li>
-              <li>
-                <Link to="/salir">Message</Link>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      </div>
-      <div className="fol">
-        <p>Followers</p>
-        <p>Following</p>
-      </div>
-      
+      </div>      
     </div>
   );
 };
