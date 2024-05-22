@@ -3,6 +3,8 @@ import { API_URL } from "../Auth/constant";
 import "../CSS/Topics.css";
 import imagen from "../assets/busqueda.png";
 import imagen2 from "../assets/flecha-pequena-izquierda.png";
+import NavigationMenu from "./NavigationMenu";
+import menuIcon from '../assets/menu-hamburguesa.png'
 
 interface Tweet {
   id: string;
@@ -88,6 +90,7 @@ const Topics: React.FC = () => {
 
   return (
     <div className="big-boxT">
+      <NavigationMenu menuIcon={menuIcon} ></NavigationMenu>
       <div className="title">
         <h1>TOPICS</h1>
       </div>

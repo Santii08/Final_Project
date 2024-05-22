@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { API_URL } from "../Auth/constant";
 import NavigationMenu from "./NavigationMenu";
 import menuIcon from "../assets/menu-hamburguesa.png";
+import '../CSS/Home.css'
 
 interface Tweet {
   id: string;
@@ -92,15 +93,15 @@ const Home = () => {
     }
   };
   return (
-    <div>
+    <div className="box-bigH">
       <NavigationMenu menuIcon={menuIcon} />
       {errorResponse && <div style={{ color: "red" }}>{errorResponse}</div>}
-      <div>
+      <div className="top">
         {tweets.map((tweet) => (
           <div key={tweet.id}>
             <h3>{tweet.username}</h3>
             <p>{tweet.text}</p>
-            <div>
+            <div className="tweet">
               <label>Likes</label>
               <button type="button" onClick={() => handleLikeClick(tweet.id)}>
                 Likes: {likes[tweet.id] || 0}

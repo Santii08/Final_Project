@@ -30,12 +30,19 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({menuIcon}) => {
                         <Link to="/home">Home</Link>
                     </li>
                     <li>
+                        <Link to="/profile">Profile</Link>
+                    </li>
+                    <li>
+                        <Link to ="/editprofile">Edit Profile</Link>
+                    </li>
+                    <li>
                         <img src={img2} alt="Persona-icon" className='menu-img'></img>
                         <Link to="/topics">Topics</Link>
                     </li>
+
                     <li>
                         <img src={img3} alt="Persona-icon" className='menu-img'></img>
-                        <Link to="/salir">Message</Link>
+                        <Link to="/salir">Logout</Link>
                     </li>
                 </ul>
             </nav>

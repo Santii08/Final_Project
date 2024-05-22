@@ -4,7 +4,8 @@ import { useParams } from "react-router-dom";
 import imagen from "../assets/Imagen sin título.png";
 import menuIcon from "../assets/menu-hamburguesa.png";
 import NavigationMenu from "./NavigationMenu";
-import "./../CSS/Profile.css";
+import '../CSS/Profile.css'
+
 
 interface Tweet {
   id: string;
@@ -108,7 +109,7 @@ const Profile = () => {
       <NavigationMenu menuIcon={menuIcon} />
       <div className="nav">
         <div className="titulo">
-          <p>Username: {tweets[0].username}</p>
+          <p>Username: {tweets.length > 0 ? tweets[0].username : "Cargando..."}</p>
           <p>Tienes {tweets.length} tweets</p>
         </div>
         <div className="image4">
@@ -117,20 +118,22 @@ const Profile = () => {
       </div>
       <div>
         <h3>Tweets:</h3>
-        <ul>
-          {tweets.map((tweet) => (
-            <div key={tweet.id} className="tweet-container">
-              (
-              <div>
-                <p>Text: {tweet.text}</p>
-                <p>Hashtag: {tweet.Hashtag}</p>
-                <p>Topic: {tweet.topic}</p>
-                <p>Likes: {tweet.likes}</p>
-              </div>
-              )
-            </div>
-          ))}
-        </ul>
+        {tweets.length > 0 ? (
+          <ul>
+            {tweets.map((tweet) => (
+              <li key={tweet.id} className="tweet-container">
+                <div>
+                  <p>Text: {tweet.text}</p>
+                  <p>Hashtag: {tweet.Hashtag}</p>
+                  <p>Topic: {tweet.topic}</p>
+                  <p>Likes: {tweet.likes}</p>
+                </div>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>Cargando...</p>
+        )}
       </div>
     </div>
   );
