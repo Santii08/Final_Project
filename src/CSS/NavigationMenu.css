@@ -1,0 +1,151 @@
+    /* NavigationMenu.css */
+
+    .navigation {
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+        padding: 5px;
+        position: relative;
+        z-index: 1;
+        
+        
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            
+
+
+        }
+
+        li {
+            width: 120px; /* Ajusta según sea necesario */
+            padding: 20px 0; /* Añade espacio alrededor de cada enlace */
+            margin: 20px 0; /* Ajusta el margen para más espacio entre los elementos */
+            position: relative; /* Para posicionar el pseudo-elemento */
+            
+        }
+        
+        li::after {
+            content: '';
+            display: block;
+            width: 100%; /* Ajusta el ancho según sea necesario para que sea más largo que el contenido */
+            height: 2px;
+            background-color: #000000; /* Color del borde */
+            position: absolute;
+            bottom: 0;
+            left: 20%; /* Ajusta la posición para centrar el borde */
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #007BFF; /* Color al pasar el cursor */
+        }
+
+
+    }
+
+    
+    .words {
+        text-align: center;
+        
+    }
+
+    .menu-img {
+        width: 20px;
+        padding-right: 10px;
+
+    }
+    
+    .menu {
+
+        display: none;
+        flex-direction: column;
+        align-items: start;
+        top: 70%;
+        right: 0;
+        border-radius: 15px;
+        width: 50%;
+        height: 100vh; /* Cubre toda la pantalla */
+        background-color:  rgba(191, 191, 191, 0.5);
+        position: absolute; /* Coloca el menú de manera absoluta */
+
+
+    }
+
+    .menu.open {
+        display: block;
+    }
+
+    .menu-toggle {
+        cursor: pointer;
+        margin-bottom: 10px;
+
+    }
+
+    .menu-icon {
+        display: flex;
+        width: 20px;
+        height: 20px;
+        margin-top: 7px;
+        padding-right: 10px;
+    }
+
+
+    @media (min-width: 1024px) {
+
+        .navigation{
+            display: flex;
+            align-items: start;
+            margin-left: 10px;
+
+            li {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 40px;
+                font-size: 25px;
+            }
+    
+            li::after {
+                content: '';
+                display: block;
+                width: 500%; /* Ajusta el ancho según sea necesario para que sea más largo que el contenido */
+                height: 2px;
+                background-color: #000000; /* Color del borde */
+                position: absolute;
+                bottom: 0;
+                left: -180%; /* Ajusta la posición para centrar el borde */
+            }
+        }
+
+        .menu{
+            margin-left: 0px;
+            left: -20px;
+            width: 30%;
+        }
+
+        
+    
+        ul {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .menu-img {
+            width: 40px;
+            height: 40px;
+        }
+    
+        .menu.open ul {
+            display: flex;
+            justify-content: center;
+        }
+    }
