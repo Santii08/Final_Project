@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../Auth/constant";
+import NavigationMenu from "./NavigationMenu";
+import menuIcon from "../assets/menu-hamburguesa.png";
 
 interface Tweet {
   id: string;
@@ -58,6 +60,7 @@ const Home = () => {
 
   const handleLikeClick = async (tweetId: string) => {
     try {
+      // Verificar si el usuario ya ha dado like al tweet
       const response = await fetch(`${API_URL}/like`, {
         method: "POST",
         headers: {
@@ -75,15 +78,23 @@ const Home = () => {
         setLikes(updatedLikes);
       } else {
         const errorData = await response.json();
-        console.error("Error al dar like al tweet:", errorData.error);
+        if (
+          response.status === 400 &&
+          errorData.error === "Ya has dado like a este tweet"
+        ) {
+          setErrorResponse(errorData.error);
+        } else {
+          console.error("Error al dar like al tweet:", errorData.error);
+        }
       }
     } catch (error) {
       console.error("Error al dar like al tweet:", error);
     }
   };
-
   return (
     <div>
+      <NavigationMenu menuIcon={menuIcon} />
+      {errorResponse && <div style={{ color: "red" }}>{errorResponse}</div>}
       <div>
         {tweets.map((tweet) => (
           <div key={tweet.id}>

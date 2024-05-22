@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import { API_URL } from "../Auth/constant";
-  const authToken = localStorage.getItem("authToken");
+
 const Home = () => {
   const authToken = localStorage.getItem("authToken");
   const [errorResponse, setErrorResponse] = useState("");
@@ -30,6 +30,7 @@ const Home = () => {
         setTweet(""); // Limpiamos el campo de tweet
         setTopic("");
         // Muestra un mensaje de éxito al usuario
+        setErrorResponse("Tweet creado correctamente");
       } else {
         const errorData = await response.json();
         console.log("Error enviando", errorData);
