@@ -1,5 +1,7 @@
 import React from "react";
 import { useAuth } from "../Auth/AuthProvider";
+import '../CSS/Salir.css'
+
 const Salir = () => {
   const { setIsAuthenticated } = useAuth();
 
@@ -7,8 +9,11 @@ const Salir = () => {
     setIsAuthenticated(false);
   };
   return (
-    <div>
-      <button onClick={handleLogout}>Logout</button>
+    <div className="big-boxOut">
+      <div className="container-w">
+        <h2>Muchas gracias, por interactuar con nosotros. ¡Ten un lindo día, no olvides volver!</h2>
+        <button onClick={handleLogout}>LOGOUT</button>
+      </div>
     </div>
   );
 };

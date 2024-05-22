@@ -27,7 +27,7 @@ const NavigationMenu: React.FC<NavigationMenuProps> = ({menuIcon}) => {
                 <ul>
                     <li>
                         <img src={img} alt="Persona-icon" className='menu-img'></img>
-                        <Link to="/profile">Profile</Link>
+                        <Link to="/home">Home</Link>
                     </li>
                     <li>
                         <img src={img2} alt="Persona-icon" className='menu-img'></img>

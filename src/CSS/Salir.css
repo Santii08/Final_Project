@@ -1,0 +1,47 @@
+.big-boxOut {
+    background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    box-sizing: border-box;
+    text-align: center;
+    color: blanchedalmond;
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido */
+    align-items: center; /* Centra verticalmente el contenido */
+}
+
+.container-w {
+    width: 50%; /* Ajusta el tamaño del contenedor según sea necesario */
+    height: 50%; /* Ajusta el tamaño del contenedor según sea necesario */
+    background-color: rgba(201, 191, 191, 0.425); /* Fondo blanco */
+    box-shadow: 0 30px 120px rgba(10, 10, 10, 0.301); /* Sombra opcional para darle un efecto elevado */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido dentro del contenedor */
+    align-items: center; /* Centra verticalmente el contenido dentro del contenedor */
+    border-radius: 20px; /* Bordes redondeados opcionales */
+    flex-direction: column;
+    padding: 20px;
+    h2 {
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+    button{
+        height: 40px;
+    }
+
+   
+}
+
+@media (min-width: 1024px) {
+    .container-w{
+        h2{
+            font-size: 30px;
+        }
+
+        button{
+            width: 200px;
+            height: 60px;
+        }
+    }
+}
