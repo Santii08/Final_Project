@@ -37,23 +37,12 @@ const Home = () => {
           setTweets(responseData);
           setErrorResponse("");
 
-          const likesData = await fetch(`${API_URL}/nLikes`, {
-            // Cambiado a '/likes'
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${authToken}`,
-            },
+          // Inicializar el estado de likes con el número de likes de cada tweet
+          const initialLikes: { [tweetId: string]: number } = {};
+          responseData.forEach((tweet) => {
+            initialLikes[tweet.id] = tweet.likes;
           });
-          if (likesData.ok) {
-            const likesResponse = await likesData.json();
-            setLikes(likesResponse);
-          } else {
-            setErrorResponse("Error al obtener la información de likes");
-          }
-        } else {
-          const errorData = await response.json();
-          setErrorResponse(errorData.error || "Error desconocido");
+          setLikes(initialLikes);
         }
       } catch (error) {
         setErrorResponse(
