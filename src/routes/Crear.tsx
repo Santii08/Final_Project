@@ -5,7 +5,7 @@ import '../CSS/Crear.css'
 import NavigationMenu from "./NavigationMenu";
 import menuIcon from '../assets/menu-hamburguesa.png'
 
-const Home = () => {
+const Crear = () => {
   const authToken = localStorage.getItem("authToken");
   const [errorResponse, setErrorResponse] = useState("");
   const [tweet, setTweet] = useState("");
@@ -88,4 +88,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Crear;
