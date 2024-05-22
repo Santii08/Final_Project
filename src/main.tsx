@@ -13,6 +13,8 @@ import Topics from "./routes/Topics";
 import Chats from "./routes/Chats";
 import Salir from "./routes/Salir";
 import EditPorfile from "./routes/EditPorfile";
+import Crear from "./routes/Crear";
+import Prueba from "./routes/Prueba";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +40,7 @@ const router = createBrowserRouter([
       {
         path: "/salir",
         element: <Salir></Salir>,
-      }
+      },
     ],
   },
 
@@ -49,6 +51,18 @@ const router = createBrowserRouter([
   {
     path: "/chats",
     element: <Chats></Chats>,
+  },
+  {
+    path: "/editprofile",
+    element: <EditPorfile></EditPorfile>,
+  },
+  {
+    path: "/crear",
+    element: <Crear></Crear>,
+  },
+  {
+    path: "/prueba",
+    element: <Prueba></Prueba>,
   },
   {
     path: "/editprofile",
