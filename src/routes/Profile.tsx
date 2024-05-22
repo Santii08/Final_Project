@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { API_URL } from "../Auth/constant";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import imagen from "../assets/Imagen sin título.png";
 import menuIcon from "../assets/menu-hamburguesa.png";
 import NavigationMenu from "./NavigationMenu";
-import "./../CSS/Profile.css";
+import "../CSS/Profile.css";
+import { useNavigate } from "react-router-dom";
 
 interface Tweet {
   id: string;
@@ -22,7 +23,17 @@ const Profile = () => {
   const [editedText, setEditedText] = useState<string>("");
   const [editedHashtag, setEditedHashtag] = useState<string>("");
   const authToken = localStorage.getItem("authToken");
-  const obetenerId = localStorage.getItem("userId");
+  const obtenerId = localStorage.getItem("userId");
+  const goTo = useNavigate();
+
+  const handleEdit = (tweetId: string) => {
+    setEditingTweet(tweetId);
+    const tweetToEdit = tweets.find((tweet) => tweet.id === tweetId);
+    if (tweetToEdit) {
+      setEditedText(tweetToEdit.text);
+      setEditedHashtag(tweetToEdit.Hashtag);
+    }
+  };
 
   const handleSaveEdit = async () => {
     try {
@@ -39,7 +50,6 @@ const Profile = () => {
       });
 
       if (response.ok) {
-        // Actualización exitosa, actualiza la lista de tweets
         const updatedTweets = tweets.map((tweet) => {
           if (tweet.id === editingTweet) {
             return {
@@ -70,7 +80,7 @@ const Profile = () => {
       }
 
       try {
-        const response = await fetch(`${API_URL}/profile/${obetenerId}`, {
+        const response = await fetch(`${API_URL}/profile/${obtenerId}`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -82,6 +92,14 @@ const Profile = () => {
           const fetchedTweets: Tweet[] = await response.json();
           setTweets(fetchedTweets);
           setError(null);
+        } else if (response.status === 404) {
+          // Usuario no encontrado o no tiene tweets
+          return (
+            <div className="no-tweets-container">
+              <p>No tienes tweets, ¿quieres publicar uno?</p>
+              <button onClick={() => goTo("/crear")}>Publicar un tweet</button>
+            </div>
+          );
         } else {
           const errorData = await response.json();
           setError(errorData.error || "Error al obtener los tweets");
@@ -93,15 +111,43 @@ const Profile = () => {
     };
 
     fetchUserData();
-  }, [authToken, obetenerId]);
+  }, [authToken, obtenerId]);
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  if (tweets.length === 0 && !error) {
-    return <div>Cargando...</div>;
+  if (!tweets.length && !error) {
+    return (
+      <div className="no-tweets-container">
+        <p>No tienes tweets, ¿quieres publicar uno?</p>
+        <button onClick={() => goTo("/crear")}>Publicar un tweet</button>
+      </div>
+    );
   }
+  const handleDelete = async (tweetId: string) => {
+    try {
+      const response = await fetch(`${API_URL}/delete/${tweetId}`, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authToken}`,
+        },
+      });
+
+      if (response.ok) {
+        // Eliminación exitosa, actualiza la lista de tweets eliminando el tweet eliminado
+        const updatedTweets = tweets.filter((tweet) => tweet.id !== tweetId);
+        setTweets(updatedTweets);
+        console.log("Tweet eliminado correctamente");
+      } else {
+        const responseData = await response.text(); // Leer la respuesta como texto
+        console.error("Error al eliminar el tweet:", responseData);
+      }
+    } catch (error) {
+      console.error("Error al eliminar el tweet:", error);
+    }
+  };
 
   return (
     <div className="big-boxP">
@@ -120,14 +166,32 @@ const Profile = () => {
         <ul>
           {tweets.map((tweet) => (
             <div key={tweet.id} className="tweet-container">
-              (
-              <div>
-                <p>Text: {tweet.text}</p>
-                <p>Hashtag: {tweet.Hashtag}</p>
-                <p>Topic: {tweet.topic}</p>
-                <p>Likes: {tweet.likes}</p>
-              </div>
-              )
+              {editingTweet === tweet.id ? (
+                <div>
+                  <input
+                    type="text"
+                    value={editedText}
+                    onChange={(e) => setEditedText(e.target.value)}
+                  />
+                  <input
+                    type="text"
+                    value={editedHashtag}
+                    onChange={(e) => setEditedHashtag(e.target.value)}
+                  />
+                  <button onClick={handleSaveEdit}>Guardar</button>
+                </div>
+              ) : (
+                <div>
+                  <p>Text: {tweet.text}</p>
+                  <p>Hashtag: {tweet.Hashtag}</p>
+                  <p>Topic: {tweet.topic}</p>
+                  <p>Likes: {tweet.likes}</p>
+                  <button onClick={() => handleEdit(tweet.id)}>Editar</button>
+                  <button onClick={() => handleDelete(tweet.id)}>
+                    Eliminar
+                  </button>
+                </div>
+              )}
             </div>
           ))}
         </ul>

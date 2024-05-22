@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import { API_URL } from "../Auth/constant";
 
-const Home = () => {
+const Crear = () => {
   const authToken = localStorage.getItem("authToken");
   const [errorResponse, setErrorResponse] = useState("");
   const [tweet, setTweet] = useState("");
@@ -81,4 +81,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Crear;
