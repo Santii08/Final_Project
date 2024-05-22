@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import { API_URL } from "../Auth/constant";
-
+  const authToken = localStorage.getItem("authToken");
 const Home = () => {
   const authToken = localStorage.getItem("authToken");
   const [errorResponse, setErrorResponse] = useState("");
