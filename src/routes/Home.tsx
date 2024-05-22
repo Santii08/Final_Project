@@ -1,11 +1,12 @@
 import React from "react";
-import DefaultLayout from "../Layouts/DefaultLayout";
-
+import Crear from "./Crear";
+import Prueba from "./Prueba";
 const Home = () => {
   return (
-    <DefaultLayout>
-      <h1>Home</h1>
-    </DefaultLayout>
+    <div>
+      <Crear></Crear>
+      <Prueba></Prueba>
+    </div>
   );
 };
 
