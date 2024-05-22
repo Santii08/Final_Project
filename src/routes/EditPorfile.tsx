@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from "react";
-
+import '../CSS/EditProfile.css'
+import imagen from '../assets/Imagen sin título.png'
+import lapiz from '../assets/lapiz.png'
+import menuIcon from '../assets/menu-hamburguesa.png'
+ 
 import { API_URL } from "../Auth/constant";
+import NavigationMenu from "./NavigationMenu";
 
 const EditProfile = () => {
   const [username, setUsername] = useState("");
@@ -48,37 +53,52 @@ const EditProfile = () => {
   }
 
   return (
-    <div>
+    <div className="big-boxE">
+      <NavigationMenu menuIcon={menuIcon}></NavigationMenu>
+      <div className="img5">
+        <img src={imagen} alt="Logo de login" />
+      </div>
       <form className="form" onSubmit={handleSubmit}>
-        <div>
-          <label>Username</label>
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Birthday</label>
-          <input
-            type="date"
-            value={birthday}
-            onChange={(e) => setBirthday(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>email:{email}</label>
-        </div>
-        <button type="submit">Editar</button>
+        
+        <div className="edit-box">
+          <div className="part">
+            <label>Username</label>
+            <img src={lapiz} alt="Logo de login" className="lapiz"/>
+          </div>
+            <input
+              type="text"
+              placeholder="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+          
+          
+        
+          <div className="part">
+            <label>Password</label>
+            <img src={lapiz} alt="Logo de login" className="lapiz"/>
+          </div>
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          
+          <div className="part">
+            <label>Birthday</label>
+            <img src={lapiz} alt="Logo de login" className="lapiz"/>
+          </div>
+            <input
+              type="date"
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+            />
+         
+        <button type="submit" className="rosa">Done</button>
         {errorResponse && <p style={{ color: "red" }}>{errorResponse}</p>}
+        </div>
+        
       </form>
     </div>
   );

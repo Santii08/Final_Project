@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { API_URL } from "../Auth/constant";
 import { useParams, Link } from "react-router-dom";
 import imagen from "../assets/Imagen sin título.png";
 import menuIcon from "../assets/menu-hamburguesa.png";
 import NavigationMenu from "./NavigationMenu";
-import "../CSS/Profile.css";
-import { useNavigate } from "react-router-dom";
+import '../CSS/Profile.css'
+
 
 interface Tweet {
   id: string;
@@ -151,53 +152,51 @@ const Profile = () => {
 
   return (
     <div className="big-boxP">
-      <NavigationMenu menuIcon={menuIcon} />
-      <div className="nav">
-        <div className="titulo">
-          <p>Username: {tweets[0].username}</p>
-          <p>Tienes {tweets.length} tweets</p>
-        </div>
-        <div className="image4">
-          <img src={imagen} alt="Logo de login" />
-        </div>
+    <NavigationMenu menuIcon={menuIcon} />
+    <div className="nav">
+      <div className="titulo">
+        <p>Username: {tweets.length > 0 ? tweets[0].username : "Cargando..."}</p>
+        <p>Tienes {tweets.length} tweets</p>
       </div>
-      <div>
-        <h3>Tweets:</h3>
-        <ul>
-          {tweets.map((tweet) => (
-            <div key={tweet.id} className="tweet-container">
-              {editingTweet === tweet.id ? (
-                <div>
-                  <input
-                    type="text"
-                    value={editedText}
-                    onChange={(e) => setEditedText(e.target.value)}
-                  />
-                  <input
-                    type="text"
-                    value={editedHashtag}
-                    onChange={(e) => setEditedHashtag(e.target.value)}
-                  />
-                  <button onClick={handleSaveEdit}>Guardar</button>
-                </div>
-              ) : (
-                <div>
-                  <p>Text: {tweet.text}</p>
-                  <p>Hashtag: {tweet.Hashtag}</p>
-                  <p>Topic: {tweet.topic}</p>
-                  <p>Likes: {tweet.likes}</p>
-                  <button onClick={() => handleEdit(tweet.id)}>Editar</button>
-                  <button onClick={() => handleDelete(tweet.id)}>
-                    Eliminar
-                  </button>
-                </div>
-              )}
-            </div>
-          ))}
-        </ul>
+      <div className="image4">
+        <img src={imagen} alt="Logo de login" />
       </div>
     </div>
-  );
+    <div>
+      <h3>Tweets:</h3>
+      <ul>
+        {tweets.map((tweet) => (
+          <div key={tweet.id} className="tweet-container">
+            {editingTweet === tweet.id ? (
+              <div>
+                <input
+                  type="text"
+                  value={editedText}
+                  onChange={(e) => setEditedText(e.target.value)}
+                />
+                <input
+                  type="text"
+                  value={editedHashtag}
+                  onChange={(e) => setEditedHashtag(e.target.value)}
+                />
+                <button onClick={handleSaveEdit}>Guardar</button>
+              </div>
+            ) : (
+              <div>
+                <p>Text: {tweet.text}</p>
+                <p>Hashtag: {tweet.Hashtag}</p>
+                <p>Topic: {tweet.topic}</p>
+                <p>Likes: {tweet.likes}</p>
+                <button onClick={() => handleEdit(tweet.id)}>Editar</button>
+                <button onClick={() => handleDelete(tweet.id)}>Eliminar</button>
+              </div>
+            )}
+          </div>
+        ))}
+      </ul>
+    </div>
+  </div>
+);
 };
 
 export default Profile;

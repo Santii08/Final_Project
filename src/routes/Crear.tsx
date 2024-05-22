@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import DefaultLayout from "../Layouts/DefaultLayout";
 import { API_URL } from "../Auth/constant";
+import '../CSS/Crear.css'
+import NavigationMenu from "./NavigationMenu";
+import menuIcon from '../assets/menu-hamburguesa.png'
 
 const Crear = () => {
   const authToken = localStorage.getItem("authToken");
@@ -45,9 +48,11 @@ const Crear = () => {
   }
 
   return (
-    <DefaultLayout>
-      <div>
-        <form className="form" onSubmit={handleSubmit}>
+
+      <div className="b-crear">
+        <NavigationMenu menuIcon={menuIcon} />
+        <form className="cajas" onSubmit={handleSubmit}>
+          <h1 className="crear">Crea tu tweet</h1>
           <div>
             <label>Tweet</label>
             <input
@@ -76,8 +81,10 @@ const Crear = () => {
           <button type="submit">Submit</button>
         </form>
         {errorResponse && <p>{errorResponse}</p>}
+  
+        
       </div>
-    </DefaultLayout>
+
   );
 };
 
