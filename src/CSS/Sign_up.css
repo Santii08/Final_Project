@@ -9,7 +9,6 @@
     background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
     height: 100vh;
     width: 100vw;
-
     position: relative;
     z-index: 0;
     box-sizing: border-box;
@@ -33,9 +32,8 @@
 
     text-align: center;
     button{ 
-        margin-left: 100px;
+        margin-left: 150px;
         width: 130px;
-        margin-top: 0px;
         
     }
     
@@ -50,12 +48,11 @@
     input[type="date"],
     input[type="email"] {
         width: 90vw;
-        height: 10px;
         padding: 10px;
         margin-left: 20px;
         margin-bottom: 10px;
         border-radius: 10px;
-        font-size: 10px;
+        font-size: 16px;
         color: black;
         box-sizing: border-box;
         background-color: #ffffff9a;
@@ -67,12 +64,11 @@
     input[type="text"],
     input[type ="password"] {
         width: 90vw;
-        height: 10px;
         padding: 10px;
         margin-left: 20px;
         margin-bottom: 10px;
         border-radius: 10px;
-        font-size: 10px;
+        font-size: 16px;
         color: rgb(0, 0, 0);
         box-sizing: border-box;
         appearance: none;
@@ -81,25 +77,24 @@
     }
 
     h1 {
+        padding: 30px;
         text-align: center;
-        margin: 0px;
     }
     label{
             text-align: left;
             padding: 30px;
-            font-size: 10px;
            
     }
-    
     
 }
 
 
 .image2 {
     img {
-        width: 100px;
+        width: 150px;
         height: auto;
         border-radius: 1000px;
+        margin-bottom: 50px;
         position: relative;
         z-index: 2;
     }    
@@ -134,7 +129,7 @@
             display: flex;
             flex-direction: column;
             width: 450px;
-            height: 30px;
+        
             margin-bottom: 10px;
             padding: 5px;
             position: relative;
@@ -162,12 +157,10 @@
     }
 
     .end{
-
-
+        margin-top: -20px;
         button{
             text-align: center;
             margin-left: 180px;
-            margin-top: 20px;
         }
         
         p{
@@ -190,5 +183,8 @@
             transform: translate(-0%, -0%);
         }
     }
+
+    
+
 
 }
