@@ -8,12 +8,14 @@
 
 .big-boxP {
     background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
-    height: 100%;
-    width: 100%;
-
     top: 0;
     left: 0;
     position: fixed;
+    height: 100%;
+    width: 100%;
+
+    
+   
     box-sizing: border-box;
     text-align: center;
     color: blanchedalmond;
