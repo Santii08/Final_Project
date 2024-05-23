@@ -5,6 +5,8 @@ import imagen from "../assets/busqueda.png";
 import imagen2 from "../assets/flecha-pequena-izquierda.png";
 import NavigationMenu from "./NavigationMenu";
 import menuIcon from '../assets/menu-hamburguesa.png'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 interface Tweet {
   id: string;
@@ -96,18 +98,21 @@ const Topics: React.FC = () => {
       </div>
 
       <div className="search">
-        <div className="img2">
-          <img src={imagen2} alt="Logo de login" />
+        <div className="searchimg">
+          <div className="img2">
+            <img src={imagen2} alt="Logo de login" />
+          </div>
+
+          <input
+            type="text"
+            placeholder="Buscar..."
+            value={searchTerm}
+            onChange={handleSearchChange}
+          />
+
+          <img src={imagen} alt="Logo de login" />
         </div>
-
-        <input
-          type="text"
-          placeholder="Buscar..."
-          value={searchTerm}
-          onChange={handleSearchChange}
-        />
-
-        <img src={imagen} alt="Logo de login" />
+        
 
         <ul>
           {loading ? (
@@ -116,7 +121,8 @@ const Topics: React.FC = () => {
             <p>Error: {error}</p>
           ) : (
             tweets.map((tweet) => (
-              <li key={tweet.id}>
+              <div className="look">
+                 <li key={tweet.id}>
                 <h3>{tweet.username}</h3>
                 <p>{tweet.text}</p>
                 <div>
@@ -124,11 +130,14 @@ const Topics: React.FC = () => {
                   <button
                     type="button"
                     onClick={() => handleLikeClick(tweet.id)}
+                    className="like-button"
                   >
-                    Likes: {tweet.likes}
+                    <FontAwesomeIcon icon={faHeart} /> {tweet.likes}
                   </button>
                 </div>
               </li>
+              </div>
+             
             ))
           )}
         </ul>

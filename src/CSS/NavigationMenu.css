@@ -79,7 +79,7 @@
         right: 0;
         border-radius: 15px;
         width: 50%;
-        height: 93vh; /* Cubre toda la pantalla */
+        height: 100vh; /* Cubre toda la pantalla */
         background-color:  rgba(223, 223, 223, 0.747);
         position: absolute; /* Coloca el menú de manera absoluta */
 

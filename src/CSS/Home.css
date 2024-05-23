@@ -3,10 +3,6 @@
     background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
     height: 100%;
     width: 100%;
-
-    position: relative;
-    
-    box-sizing: border-box;
     text-align: center;
     color: blanchedalmond;
 
@@ -74,6 +70,7 @@
 
 .add {
     width: 100vw;
+    
 
 
     button {
@@ -110,6 +107,7 @@
             width: 150px;
             font-size: 30px;
             text-align: left;
+            transform: translate(-100%,-30%);
         }
 
         p {
@@ -121,6 +119,12 @@
         h1 {
             font-size: 40px;
         }
+    }
+
+    .add {
+        display: flex;
+        flex-direction: row-reverse;
+        margin-right: 90px;
     }
     .tweet-like{
         
