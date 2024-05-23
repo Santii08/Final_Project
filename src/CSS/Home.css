@@ -1,8 +1,8 @@
 .box-bigH {
     
     background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
-    height: 100vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
 
     position: relative;
     
@@ -57,14 +57,19 @@
 }
 
 
+
 .home {
-    h1{
+    
+    h1 {
+        
+        text-align: right;
         font-size: 20px;
         margin: 10px;
+        width: 100px;
     }
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+
+ 
+    
 }
 
 .add {

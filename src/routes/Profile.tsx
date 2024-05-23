@@ -6,6 +6,8 @@ import imagen from "../assets/Avatar-Profile-PNG-Free-Image.png";
 import menuIcon from "../assets/menu-hamburguesa.png";
 import NavigationMenu from "./NavigationMenu";
 import '../CSS/Profile.css'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 
 
 interface Tweet {
@@ -162,7 +164,7 @@ const Profile = () => {
         <img src={imagen} alt="Logo de login" />
       </div>
     </div>
-    <div>
+    <div className="my-tweets">
       <h3>Tweets:</h3>
       <ul>
         {tweets.map((tweet) => (
@@ -182,13 +184,16 @@ const Profile = () => {
                 <button onClick={handleSaveEdit}>Guardar</button>
               </div>
             ) : (
-              <div>
+              <div className="content">
                 <p>Text: {tweet.text}</p>
                 <p>Hashtag: {tweet.Hashtag}</p>
                 <p>Topic: {tweet.topic}</p>
                 <p>Likes: {tweet.likes}</p>
-                <button onClick={() => handleEdit(tweet.id)}>Editar</button>
-                <button onClick={() => handleDelete(tweet.id)}>Eliminar</button>
+                <div className="icons">
+                  <FontAwesomeIcon icon={faEdit} onClick={() => handleEdit(tweet.id)} />
+                  <FontAwesomeIcon icon={faTrashAlt} onClick={() => handleDelete(tweet.id)} />
+                </div>
+                
               </div>
             )}
           </div>

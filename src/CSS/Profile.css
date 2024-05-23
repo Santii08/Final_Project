@@ -8,14 +8,18 @@
 
 .big-boxP {
     background: linear-gradient(0deg, #6E0FB9, #7B1C1C);
-    height: 100vh;
-    width: 100vw;
-    position: relative;
+    height: 100%;
+    width: 100%;
+
+    top: 0;
+    left: 0;
+    position: fixed;
     box-sizing: border-box;
     text-align: center;
     color: blanchedalmond;
     display: flex; 
     flex-direction: column;
+
 }
 
 .image4 {
@@ -26,12 +30,13 @@
     }
 }
 
+
 .nav {
     font-size: 10px;
     display: flex;
     justify-content: space-between;
     color: black;
-    padding: 10px;
+
 
     .titulo {
         display: flex;
@@ -46,12 +51,40 @@
 }
 
 .tweet-container {
-    background-color: white;
-    color: black;
-    border-radius: 10px;
+    width: 70%; /* Ajusta el tamaño del contenedor según sea necesario */
+    height: 30%; /* Ajusta el tamaño del contenedor según sea necesario */
+    background-color: rgba(201, 191, 191, 0.425); /* Fondo blanco */
+    box-shadow: 0 30px 120px rgba(10, 10, 10, 0.301); /* Sombra opcional para darle un efecto elevado */
+    display: flex;
+    justify-content: center; /* Centra horizontalmente el contenido dentro del contenedor */
+    align-items: center; /* Centra verticalmente el contenido dentro del contenedor */
+    border-radius: 20px; /* Bordes redondeados opcionales */
+    flex-direction: column;
+    margin-bottom: 10px;
     margin: 10px;
     padding: 10px;
+    font-size: 15px;
     list-style-type: none; /* Esto quita los puntos de la lista */
+    transform: translate(10%, 0%);
+    
+    
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+
+    .icons {
+        display: flex;
+        justify-content: space-between;
+    }
+}
+
+.my-tweets {
+    h3 {
+        font-size: 14px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -69,6 +102,19 @@
             width: 100vw;
             font-size: 25px;
             padding: 30px;
+        }
+    }
+
+    .content{
+        font-size: 20px;
+    }
+    .tweet-container {
+        transform: translate(-0px);
+    }
+
+    .my-tweets {
+        h3 {
+            font-size: 20px;
         }
     }
 }
