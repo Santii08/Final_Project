@@ -12,61 +12,56 @@ import Profile from "./routes/Profile";
 import Topics from "./routes/Topics";
 import Chats from "./routes/Chats";
 import Salir from "./routes/Salir";
-import EditPorfile from "./routes/EditPorfile";
+import EditProfile from "./routes/EditPorfile";
 import Crear from "./routes/Crear";
 import Prueba from "./routes/Prueba";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Login></Login>,
+    element: <Login />,
   },
   {
     path: "/sign",
-    element: <Sign_up></Sign_up>,
+    element: <Sign_up />,
   },
   {
     path: "/",
     element: <ProtectedRoutes />,
     children: [
       {
-        path: "/home",
-        element: <Home></Home>,
+        path: "home",
+        element: <Home />,
       },
       {
-        path: "/profile",
-        element: <Profile></Profile>,
+        path: "profile",
+        element: <Profile />,
       },
       {
-        path: "/salir",
-        element: <Salir></Salir>,
+        path: "topics",
+        element: <Topics />,
+      },
+      {
+        path: "chats",
+        element: <Chats />,
+      },
+      {
+        path: "salir",
+        element: <Salir />,
+      },
+      {
+        path: "editprofile",
+        element: <EditProfile />,
+      },
+      {
+        path: "crear",
+        element: <Crear />,
+      },
+      {
+        path: "prueba",
+        element: <Prueba />,
       },
     ],
-  },
-
-  {
-    path: "/topics",
-    element: <Topics></Topics>,
-  },
-  {
-    path: "/chats",
-    element: <Chats></Chats>,
-  },
-  {
-    path: "/editprofile",
-    element: <EditPorfile></EditPorfile>,
-  },
-  {
-    path: "/crear",
-    element: <Crear></Crear>,
-  },
-  {
-    path: "/prueba",
-    element: <Prueba></Prueba>,
-  },
-  {
-    path: "/editprofile",
-    element: <EditPorfile></EditPorfile>,
   },
 ]);
 
