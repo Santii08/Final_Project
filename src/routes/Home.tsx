@@ -99,6 +99,7 @@ const Home = () => {
       <div className="home">
         <h1>HOME</h1>
         <NavigationMenu menuIcon={menuIcon} />
+        
       </div>
       
       {errorResponse && <div style={{ color: "red" }}>{errorResponse}</div>}
