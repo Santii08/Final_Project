@@ -7,6 +7,8 @@ const Salir = () => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
+    const authToken = localStorage.removeItem("authToken");
+    const obtenerId = localStorage.removeItem("userId");
   };
   return (
     <div className="big-boxOut">
