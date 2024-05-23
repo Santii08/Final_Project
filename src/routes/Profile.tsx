@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../Auth/constant";
 import { useParams, Link } from "react-router-dom";
-import imagen from "../assets/Imagen sin título.png";
+import imagen from "../assets/Avatar-Profile-PNG-Free-Image.png";
 import menuIcon from "../assets/menu-hamburguesa.png";
 import NavigationMenu from "./NavigationMenu";
 import '../CSS/Profile.css'

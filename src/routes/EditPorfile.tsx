@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import '../CSS/EditProfile.css'
-import imagen from '../assets/Imagen sin título.png'
+import imagen from '../assets/Avatar-Profile-PNG-Free-Image.png'
 import lapiz from '../assets/lapiz.png'
 import menuIcon from '../assets/menu-hamburguesa.png'
  

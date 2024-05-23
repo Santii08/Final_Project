@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../Auth/constant";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import NavigationMenu from "./NavigationMenu";
 import menuIcon from "../assets/menu-hamburguesa.png";
 import '../CSS/Home.css'
@@ -94,25 +96,28 @@ const Home = () => {
   };
   return (
     <div className="box-bigH">
-      <NavigationMenu menuIcon={menuIcon} />
+      <div className="home">
+        <h1>HOME</h1>
+        <NavigationMenu menuIcon={menuIcon} />
+      </div>
+      
       {errorResponse && <div style={{ color: "red" }}>{errorResponse}</div>}
       <div className="top">
         {tweets.map((tweet) => (
-          <div key={tweet.id}>
-            <h3>{tweet.username}</h3>
-            <p>{tweet.text}</p>
-            <div className="tweet">
-              <label>Likes</label>
-              <button type="button" onClick={() => handleLikeClick(tweet.id)}>
-                Likes: {likes[tweet.id] || 0}
-              </button>
+          <div key={tweet.id} className="tweet-caja">
+              <h3>{tweet.username}</h3>
+              <p>{tweet.text}</p>
+              <div className="tweet-like" onClick={() => handleLikeClick(tweet.id)}>
+                <FontAwesomeIcon icon={faHeart} />
+                <span>{likes[tweet.id] || 0}</span>
             </div>
           </div>
         ))}
+        <div className="add">
+          <button onClick={handleRedirect}>+</button>
+        </div>
       </div>
-      <div>
-        <button onClick={handleRedirect}>Añadir</button>
-      </div>
+     
     </div>
   );
 };
